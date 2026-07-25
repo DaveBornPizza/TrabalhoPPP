@@ -1,15 +1,17 @@
 package quiz.aplicacao.programacao;
 
+/**
+ * Ponto de entrada da Aplicação Cliente 1 (Quiz de Programação, Swing).
+ *
+ * Apenas dispara o Template Method herdado de AbstractQuiz. Toda a
+ * configuração (perguntas, jogadores, pontuação, interface, observadores)
+ * fica em QuizProgramacao; todo o fluxo de execução fica em QuizEngine,
+ * no framework.
+ */
 public class MainProgramacao {
-    // Usa o metodo processarPacote("quiz.aplicacao.programacao") da classe
-    // ProcessadorAnotacoes pra conseguir a lista de perguntas desse quiz.
-    //
-    // Depois disso, cria um QuizEngine() e configura ele via setters:
-    //   - carregarPerguntas(...)          -> lista de perguntas obtida acima
-    //   - definirJogadores(...)           -> lista de jogadores
-    //   - definirInterfaceExibicao(...)   -> InterfaceExibicaoSwing
-    //   - definirPontuacaoStrategy(...)   -> estratégia de pontuação escolhida
-    //
-    // Depois, adiciona o observador (PlacarSwing) com adicionarObserver(...),
-    // e por fim inicia o quiz com executar().
+
+    public static void main(String[] args) {
+        new QuizProgramacao().iniciar();
+        System.exit(0);
+    }
 }

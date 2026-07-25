@@ -20,10 +20,9 @@ import java.util.List;
  * (Factory -> perguntas, Strategy -> pontuação, interface de
  * exibição -> exibir/capturar resposta).
  */
-public class QuizEngine implements QuizSujeito {
+public class QuizEngine extends QuizSujeito {
     private List<Pergunta> perguntas;
     private List<Jogador> jogadores;
-    private List<QuizObserver> observadores = new ArrayList<>();
     private InterfaceExibicao interfaceExibicao;
     private PontuacaoStrategy pontuacaoStrategy;
     private int perguntaAtual;
@@ -36,25 +35,6 @@ public class QuizEngine implements QuizSujeito {
     public void definirJogadores(List<Jogador> jogadores) { this.jogadores = jogadores; }
     public void definirInterfaceExibicao(InterfaceExibicao interfaceExibicao) { this.interfaceExibicao = interfaceExibicao; }
     public void definirPontuacaoStrategy(PontuacaoStrategy pontuacaoStrategy) { this.pontuacaoStrategy = pontuacaoStrategy; }
-
-    @Override
-    public void adicionarObserver(QuizObserver observer) {
-        observadores.add(observer);
-    }
-
-    @Override
-    public void notificarResposta(Jogador jogador, ResultadoResposta resultado) {
-        for (QuizObserver obs : observadores) {
-            obs.aoResponder(jogador, resultado);
-        }
-    }
-
-    @Override
-    public void notificarFimDeQuiz() {
-        for (QuizObserver obs : observadores) {
-            obs.aoFinalizarQuiz(jogadores);
-        }
-    }
 
     private void avancar() {
         perguntaAtual++;
@@ -93,7 +73,7 @@ public class QuizEngine implements QuizSujeito {
             }
             avancar();
         }
-        notificarFimDeQuiz();
+        notificarFimDeQuiz(jogadores);
         interfaceExibicao.exibirSumario(jogadores);
     }
 }

@@ -1,4 +1,4 @@
-package quiz.aplicacao.quiz2;
+package quiz.aplicacao.conhecimentosGerais;
 
 import quiz.framework.Jogador;
 import quiz.framework.QuizObserver;
