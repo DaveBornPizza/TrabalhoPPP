@@ -25,7 +25,7 @@ public abstract class AbstractQuiz {
         InterfaceExibicao interfaceExibicao = criarInterfaceExibicao();
 
         engine.carregarPerguntas(criarPerguntas());
-        engine.definirJogadores(interfaceExibicao.capturarJogadores()); /* Passo fixo */
+        engine.definirJogadores(interfaceExibicao.capturarJogadores());
         engine.definirInterfaceExibicao(interfaceExibicao);
         engine.definirPontuacaoStrategy(criarPontuacaoStrategy());
 
